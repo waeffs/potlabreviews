@@ -1,0 +1,28 @@
+<!-- Top Stories Area -->
+	<section class="top-stories-area">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="owl-carousel active-stories-carousel">
+						<!-- single stories carousel -->
+						<!-- single stories carousel -->
+						{% for post in top_posts.items %}
+						<div class="single-stories-carousel d-flex align-items-center">
+							<div class="stories-thumb">
+								<img class="img-fluid" src="{{url_for('static', filename='blog_pics/small/' + post.blog_thumbnail)}}" alt="">
+							</div>
+							<div class="stories-details">
+								<h6><a href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title[:35] | safe }} <br>
+										{{ post.text[:10] | safe }}</a></h6>
+								<p>{{ post.date.strftime('%Y-%m-%d') }}</p>
+							</div>
+						</div>
+						{% endfor %}
+						<!-- single stories carousel -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Stories Area -->

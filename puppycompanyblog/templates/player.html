@@ -1,0 +1,30 @@
+{% extends  "base.html" %}
+
+{% block content %}
+
+
+<div>The player HD</div>
+
+<div id="player"></div>
+
+
+
+
+<script>
+
+var player = null;
+                    AceStream.createPlayer("#player", {
+                        onLoad: function (playerObj) {
+                            player = playerObj;
+                            // Sintel
+                            player.loadContentId("8540e6f57407c3c88133919cbcce36fcd7b30334");
+                        },
+                        onError: function(err) {
+                            console.log("init: error: " + err);
+                        }
+                    });
+
+
+</script>
+
+{% endblock %}

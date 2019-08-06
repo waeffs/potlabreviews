@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="main-body section-gap">
+<div class="jumbotron">
+
+  <h1>You will receive a phone verification code to the number you entered shortly.</h1>
+  <p>Enter The Code Below</p>
+
+  <div class="content-section">
+    <div class="container">
+      <form method="POST">
+      <div class="row">
+
+                <div class="col-sm-8">
+                  <div class="card">
+                    <div class="card-body">
+                      {{form.hidden_tag()}}
+                      <div class="form-group">
+                      {{form.code.label}}
+                      {{form.code(class="form-control", id="code", maxlength=6)}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="card">
+                    <div class="card-body">
+                      <div class="form-group">
+                      {{form.submit(class="btn btn-primary")}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</section>
+
+<script type="text/javascript">
+// Restricts input for the given textbox to the given inputFilter.
+function setInputFilter(textbox, inputFilter) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop"].forEach(function(event) {
+    textbox.addEventListener(event, function() {
+      if (inputFilter(this.value)) {
+        this.oldValue = this.value;
+        this.oldSelectionStart = this.selectionStart;
+        this.oldSelectionEnd = this.selectionEnd;
+      } else if (this.hasOwnProperty("oldValue")) {
+        this.value = this.oldValue;
+        this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+      }
+    });
+  });
+}
+
+//set filter integer only
+setInputFilter(document.getElementById("code"), function(value) {
+  return /^\d*$/.test(value); });
+
+</script>
+
+{% endblock %}

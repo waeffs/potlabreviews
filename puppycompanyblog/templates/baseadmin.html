@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>The Daily Scroll</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,800" rel="stylesheet">
+	<link rel="stylesheet" href="../../../static/css/vendor.css">
+	<link rel="stylesheet" href="../../../static/css/style-2.css" id="template-skin">
+	<link rel="shortcut icon" href="../../static/images/brandedtext.ico" type="image/x-icon">
+
+	<link rel="stylesheet" href="static/css/linearicons.css">
+	<link rel="stylesheet" href="static/css/font-awesome.min.css">
+	<link rel="stylesheet" href="static/css/bootstrap.css">
+	<link rel="stylesheet" href="static/css/magnific-popup.css">
+	<link rel="stylesheet" href="static/css/nice-select.css">
+	<link rel="stylesheet" href="static/css/animate.min.css">
+	<link rel="stylesheet" href="static/css/owl.carousel.css">
+	<link rel="stylesheet" href="static/css/main.css">
+
+
+</head>
+	<body>
+
+		{% with messages = get_flashed_messages(with_categories=true) %}
+		  {% if messages %}
+		    <div class="alert alert-dismissible fade show" role="alert">
+		    {% for category, message in messages %}
+		      <div class="{{category}}"> {{ message }}</div>
+		    {% endfor %}
+			</div>
+		  {% endif %}
+		{% endwith %}
+
+
+
+
+
+
+		<!-- Preload start -->
+		<div id="loader-wrapper">
+		  <div id="loader"></div>
+		  <div class="loader-section section-left"></div>
+		  <div class="loader-section section-right"></div>
+		</div><!-- Preload end -->
+		<!-- To the top start -->
+		<div id="to-the-top" class="to-the-top"><a href="#"><i class="fa fa-long-arrow-up"></i></a></div><!-- To the top end -->
+		<!-- Mobile menu start -->
+		<aside id="offcanvas-menu" data-pushbar-id="left" class="pushbar from_left">
+		  <h4 class="title"><span>Site Menu</span><span data-pushbar-close> </span></h4>
+		</aside><!-- Mobile menu end -->
+		<div id="page" class="page">
+		  <div id="content-wrapper" class="content-wrapper">
+		    <div class="content-wrapper-inner">
+		      <!-- Header start -->
+		      <header class="site-header site-header-1">
+
+		        <!-- Top bar start
+		        <div class="top-bar">
+		          <div class="container">
+		            <div class="row">
+		              <div class="col-lg-12 top-bar-content">
+		                <ul>
+		                  <li><a href="#">our team</a></li>
+		                  <li><a href="#">Order Now</a></li>
+		                  <li><a href="#">newsroom</a></li>
+		                  <li><a href="#">careers</a></li>
+		                  <li><a href="#">contact us</a></li>
+		                </ul>
+		                <div class="lang-and-social-buttons">
+		                  <ul>
+		                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+		                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+		                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+		                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+		                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+		                  </ul>
+		                </div>
+		              </div>
+		            </div>
+		          </div>
+		        </div> Top bar end -->
+
+							<!-- Menu bar start -->
+							<div id="sticked-bar" class="menu-bar">
+								<div class="container">
+									<div class="row">
+										<div class="col-lg-12 menu-bar-content">
+											<!-- Memu start --><button data-pushbar-target="left" class="hidden-lg"><i class="fa fa-bars"></i></button>
+											<nav id="site-menu" class="site-menu hidden-sm hidden-xs hidden-md">
+												<ul class="nav-menu">
+
+													<li class="nav-item">
+														<a class="nav-link" href="{{ url_for('core.index') }}">Home</a>
+													</li>
+													<li class="nav-item">
+														<a class="nav-link" href="{{ url_for('core.info') }}">About Us</a>
+													</li>
+														{% if current_user.is_authenticated %}
+														<li class="nav-link"><a href="{{ url_for('users.logout') }}">Log Out</a></li>
+														<li class="nav-link"><a href="{{ url_for('users.account') }}">Account</a></li>
+														<li class="nav-link"><a href="{{ url_for('blog_posts.create_post') }}">Create Post</a></li>
+														{% else %}
+														<li class="nav-link"><a href="{{ url_for('users.login') }}">Log In</a></li>
+														<li class="nav-link"><a href="{{ url_for('users.register') }}">Register</a></li>
+														{% endif %}
+
+												</ul>
+
+
+											<form class="search-form"><input type="search" placeholder="Search here..."><button type="submit"><span class="wicon-iconmonstr-search-thin"></span></button></form><!-- Search end -->
+										</div>
+									</div>
+								</div>
+							</div><!-- Menu bar end -->
+
+			<div class="container box_1170 main-menu">
+			<div class="row align-items-center justify-content-center d-flex">
+				<nav id="nav-menu-container">
+
+				</nav>
+			</div>
+		</div>
+
+						</header><!-- Header end -->
+
+					<!-- Latest blog posts start -->
+
+						{% block content %}
+
+						{% endblock %}
+
+
+
+
+
+		<!-- bootstrap scripts-->
+
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+		<script src="../static/js/vendor.js"></script>
+		<script src="../static/js/framework.js"></script>
+		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpVQEdCmd9aY_-N6920-wilfScyBwS-Lw&amp;callback=initMap"></script>
+		<script src="../static/js/template.js"></script>
+
+
+
+
+	</body>
+</html>
